@@ -9,7 +9,7 @@ for file in {test,test-*}.js ; do
 done
 mv index.test-d.ts esm/index.test-d.ts
 
-Replace module imports in all ts files
+# Replace module imports in all ts files
 readarray -d '' files < <(find esm \( -name "*.js" -o -name "*.d.ts" \) -print0)
 function replace_imports () {
 	from=$1
@@ -20,6 +20,10 @@ function replace_imports () {
 }
 # replace_imports "FROM" "@esm2cjs/TO"
 replace_imports "aggregate-error"
+
+# Fix test files
+sed -i "s#'aggregate-error'#'@esm2cjs/aggregate-error'#g" test.mjs
+
 
 PJSON=$(cat package.json | jq --tab '
 	del(.type)
