@@ -1,17 +1,21 @@
 {
-	"name": "p-map",
+	"name": "@esm2cjs/p-map",
 	"version": "5.5.0",
-	"description": "Map over promises concurrently",
+	"description": "Map over promises concurrently. This is a fork of sindresorhus/p-map, but with CommonJS support.",
 	"license": "MIT",
-	"repository": "sindresorhus/p-map",
-	"funding": "https://github.com/sponsors/sindresorhus",
+	"repository": "esm2cjs/p-map",
+	"funding": "https://github.com/sponsors/AlCalzone",
 	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "https://sindresorhus.com"
+		"name": "Dominic Griesel",
+		"email": "d.griesel@gmx.net"
 	},
-	"type": "module",
-	"exports": "./index.js",
+	"exports": {
+		".": {
+			"import": "./esm/index.js",
+			"require": "./cjs/index.js"
+		},
+		"./package.json": "./package.json"
+	},
 	"engines": {
 		"node": ">=12"
 	},
@@ -19,8 +23,8 @@
 		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js",
-		"index.d.ts"
+		"cjs/",
+		"esm/"
 	],
 	"keywords": [
 		"promise",
@@ -41,7 +45,7 @@
 		"bluebird"
 	],
 	"dependencies": {
-		"aggregate-error": "^4.0.0"
+		"@esm2cjs/aggregate-error": "^4.0.0"
 	},
 	"devDependencies": {
 		"ava": "^4.1.0",
@@ -51,5 +55,31 @@
 		"time-span": "^5.0.0",
 		"tsd": "^0.19.1",
 		"xo": "^0.48.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"main": "cjs/index.js",
+	"module": "esm/index.js",
+	"types": "esm/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"esm/index.d.ts": [
+				"esm/index.d.ts"
+			],
+			"cjs/index.d.ts": [
+				"esm/index.d.ts"
+			],
+			"*": [
+				"esm/*"
+			]
+		}
+	},
+	"xo": {
+		"ignores": [
+			"cjs",
+			"**/*.test-d.ts",
+			"**/*.d.ts"
+		]
 	}
 }

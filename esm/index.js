@@ -1,4 +1,4 @@
-import AggregateError from 'aggregate-error';
+import AggregateError from '@esm2cjs/aggregate-error';
 
 /**
 An error to be thrown when the request is aborted by AbortController.

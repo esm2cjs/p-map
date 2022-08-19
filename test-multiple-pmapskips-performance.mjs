@@ -1,7 +1,7 @@
 import test from 'ava';
 import inRange from 'in-range';
 import timeSpan from 'time-span';
-import pMap, {pMapSkip} from './index.js';
+import pMap, {pMapSkip} from './esm/index.js';
 
 function generateSkipPerformanceData(length) {
 	const data = [];

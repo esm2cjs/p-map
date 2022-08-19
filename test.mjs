@@ -3,8 +3,8 @@ import delay from 'delay';
 import inRange from 'in-range';
 import timeSpan from 'time-span';
 import randomInt from 'random-int';
-import AggregateError from 'aggregate-error';
-import pMap, {pMapSkip} from './index.js';
+import AggregateError from '@esm2cjs/aggregate-error';
+import pMap, {pMapSkip} from './esm/index.js';
 
 const sharedInput = [
 	[async () => 10, 300],
